@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>K8S-Manager</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">K8S Value Editor</a>
+        <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="other.html">Other</a></li>
+        </ul> -->
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col m4 l2">
+        <h5>Contexts</h5>
+        <div id="contexts" class="collection">
+          <a
+            href="#"
+            v-if="contexts.length"
+            v-for="context in contexts"
+            v-bind:class="['collection-item', {'active': context.text === currentContext.text}]"
+            v-on:click="onContextClick(context.text)">
+            {{ context.text }}
+          </a>
+          <div v-if="!contexts.length">Loading...</div>
+        </div>
+    
+        <h5>Releases</h5>
+        <div id="deployments" class="collection">
+          <a
+            href="#"
+            v-if="deployments.length"
+            v-for="deployment in deployments"
+            v-on:click="onDeploymentClick(deployment.text)"
+            v-bind:class="['collection-item', {'active': deployment.text === currentDeployment.text}]">
+            {{ deployment.text }}
+          </a>
+          <div v-if="!deployments.length">Loading...</div>
+        </div>
+      </div>
+      <div class="col m8 l10">
+        <div id="current-values">
+          <h5>Values</h5>
+          <textarea v-model="currentValues.text"></textarea>
+          <div class="col s9">
+            <b>Chart path:</b>
+            <span v-if="chartPath.text">{{chartPath.text}}</span>
+            <span v-if="!chartPath.text">
+              <button :disabled="!currentDeployment.text" v-on:click="onPathChoose()">Choose folder</button>
+            </span>
+          </div>
+          <div class="col s3">
+            <div class="row right">
+              <button
+                :disabled="!currentDeployment.text || !chartPath.text"
+                v-on:click="onDiffClick()">
+                DIFF
+              </button>
+              <button
+                :disabled="!currentDeployment.text || !chartPath.text || !checkedDiff.value"
+                v-on:click="onUpgradeClick()">
+                UPGRADE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      require('./renderer.js');
+    </script>
+  </body>
+</html>
