@@ -24,5 +24,6 @@ const createWindow = () => {
 }
 
 module.exports = {
-  createWindow
+  createWindow,
+  mainWindow
 }

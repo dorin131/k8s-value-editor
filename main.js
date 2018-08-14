@@ -1,6 +1,6 @@
 require('./events/mainEvents');
 const { createMenu } = require('./electronSetup/menuSetup');
-const { createWindow } = require('./electronSetup/windowSetup')
+const { createWindow, mainWindow } = require('./electronSetup/windowSetup')
 const { app } = require('electron');
 
 app.on('ready', () => {
