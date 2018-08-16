@@ -1,18 +1,12 @@
 # k8s-value-editor
 A Kubernetes tool for editing release values
 
-
-### MAC
+### Run locally (any platform)
 ```sh
-npm run package-mac
+npm start
 ```
 
-### WIN
+### Install on Mac
 ```sh
-npm run package-win
-```
-
-### LINUX
-```sh
-npm run package-linux
+./scripts/install_mac.sh
 ```

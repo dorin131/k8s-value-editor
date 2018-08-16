@@ -14,7 +14,7 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">K8S Value Editor</a>
+        <div href="#" class="brand-logo">K8S Value Editor</div>
         <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="other.html">Other</a></li>
         </ul> -->
@@ -22,7 +22,7 @@
     </nav>
 
     <div class="row">
-      <div class="col m4 l2">
+      <div class="col m4 l3">
         <h5>Contexts</h5>
         <div id="contexts" class="collection">
           <a
@@ -49,7 +49,7 @@
           <div v-if="!deployments.length">Loading...</div>
         </div>
       </div>
-      <div class="col m8 l10">
+      <div class="col m8 l9">
         <div id="current-values">
           <h5>Values</h5>
           <textarea v-model="currentValues.text"></textarea>

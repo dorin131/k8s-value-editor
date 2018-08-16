@@ -1,3 +1,16 @@
 #current-values textarea {
   height: 300px;
 }
+
+body > nav, .collection-item.active {
+  background-color: #3371e3;
+}
+
+body div .collection > .collection-item {
+  color: #3371e3;
+}
+
+body div .collection > .collection-item.active {
+  color: white;
+  background-color: #3371e3;
+}
