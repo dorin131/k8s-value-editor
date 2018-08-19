@@ -86,7 +86,7 @@ const onContextClick = (ctx) => {
   currentDeployment.text = '';
   currentValues.text = '';
   setContext(ctx)
-  .then(getDeployments)
+  .then(() => getDeployments())
   .then(res => deployments.push(...res));
 };
 
@@ -115,10 +115,9 @@ new Vue({
 });
 
 
-Promise.all([getContexts(), getCurrentContext()])
+Promise.all([getContexts(), getCurrentContext(), getDeployments()])
 .then((res) => {
   contexts.push(...res[0]);
-  return currentContext.text = res[1];
-})
-.then(getDeployments)
-.then(res => deployments.push(...res));
+  currentContext.text = res[1];
+  deployments.push(...res[2])
+});
